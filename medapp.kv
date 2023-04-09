@@ -1,24 +1,73 @@
+#:import utils kivy.utils
+
 <MyGridLayout>
 
 	nome:nome
 	tipo:tipo
+	dataexame:dataexame
+	horario:horario
+
 	GridLayout:
 		cols:1
 		size: root.width, root.height
+		background_color: (137/255,253/255,218/255,1)
+		canvas.before:
+		    Color:
+			    rgba: self.background_color
+		    Rectangle:
+				size: self.size
+				pos: self.pos
 		GridLayout:
+		    padding:20
+		    spacing:10
 			cols:2
+			background_color: (186/255,104/255,200/255,1)
+			canvas.before:
+		        Color:
+				    rgba: self.background_color
+				Rectangle:
+				    size: self.size
+				    pos: self.pos
 			Label:
 				text: "Nome do exame"
+				font_size: 30
 			TextInput:
 				id: nome
+				font_size: 30
 				multiline:False
 			Label:
 				text: "Tipo do exame"
+				font_size: 30
 			TextInput:
 				id: tipo
+				font_size: 30
+				multiline:False
+			Label:
+			    text:"É necessário jejum?"
+			    font_size:30
+			CheckBox:
+			    on_active: root.checkbox_click(self, self.active)
+			Label:
+				text: "Data do exame:"
+				font_size: 30
+			TextInput:
+				id: dataexame
+				font_size: 30
+				multiline:False
+			Label:
+				text: "Horário do exame:"
+				font_size: 30
+			TextInput:
+				id: horario
+				font_size: 30
 				multiline:False
 
 		Button:
 			text: "CADASTRAR EXAME"
 			font_size: 32
+			color:(186/255,104/255,200/255,1)
+			bold: True
 			on_press: root.press()
+			background_normal: ''
+			background_color: utils.get_color_from_hex('#89FDDA')
+
